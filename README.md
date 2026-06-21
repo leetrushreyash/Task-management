@@ -1,22 +1,22 @@
-# 📝 Secure Multi-User Todo API
+# Secure Multi-User Todo API
 
 A production-ready, secure, and robust RESTful API built with **Spring Boot**. This project demonstrates enterprise-level backend patterns, including stateless JWT authentication, resource ownership, role-based access control (RBAC), and global exception handling.
 
 ---
 
-## ✨ Features
+## Features
 
-* **🔐 Stateless JWT Authentication:** Fully secured endpoints using custom JSON Web Tokens and Spring Security Filter Chains.
-* **👥 Multi-User Support:** Registration and login capabilities. Users are completely isolated from each other.
-* **🛡️ Ownership-Based Authorization:** Users can only view, create, update, and delete their *own* Todos. Unauthorized access attempts are intercepted and return clean `403 Forbidden` responses.
-* **👑 Role-Based Access Control (RBAC):** Dedicated endpoints protected by `@PreAuthorize` that only users with the `ADMIN` role can access.
-* **✅ Data Validation:** DTOs are strictly validated using `jakarta.validation` constraints to ensure data integrity.
-* **📄 Pagination & Sorting:** The API utilizes Spring Data JPA `Pageable` to efficiently return chunks of data and metadata, preventing memory overload on large datasets.
-* **🚨 Global Exception Handling:** Custom exceptions (e.g., `OwnershipException`, `EmailExistsException`) are caught globally by a `@RestControllerAdvice` to guarantee clean and predictable JSON error responses.
+* **Stateless JWT Authentication:** Fully secured endpoints using custom JSON Web Tokens and Spring Security Filter Chains.
+* **Multi-User Support:** Registration and login capabilities. Users are completely isolated from each other.
+* **Ownership-Based Authorization:** Users can only view, create, update, and delete their *own* Todos. Unauthorized access attempts are intercepted and return clean `403 Forbidden` responses.
+* **Role-Based Access Control (RBAC):** Dedicated endpoints protected by `@PreAuthorize` that only users with the `ADMIN` role can access.
+* **Data Validation:** DTOs are strictly validated using `jakarta.validation` constraints to ensure data integrity.
+* **Pagination & Sorting:** The API utilizes Spring Data JPA `Pageable` to efficiently return chunks of data and metadata, preventing memory overload on large datasets.
+* **Global Exception Handling:** Custom exceptions (e.g., `OwnershipException`, `EmailExistsException`) are caught globally by a `@RestControllerAdvice` to guarantee clean and predictable JSON error responses.
 
 ---
 
-## 🛠️ Technology Stack
+## Technology Stack
 
 * **Java 21**
 * **Spring Boot 3.x**
@@ -28,7 +28,7 @@ A production-ready, secure, and robust RESTful API built with **Spring Boot**. T
 
 ---
 
-## 🚀 Getting Started
+## Getting Started
 
 ### Prerequisites
 * JDK 21 or higher installed
@@ -60,16 +60,16 @@ Run the following command in the root directory of the project:
 
 ---
 
-## 📚 API Documentation
+## API Documentation
 
-### 👤 Authentication (`/api/auth`)
+### Authentication (`/api/auth`)
 
 | Method | Endpoint | Description | Requires Auth |
 | :--- | :--- | :--- | :--- |
-| `POST` | `/api/auth/register` | Register a new user | ❌ |
-| `POST` | `/api/auth/login` | Login and receive a JWT | ❌ |
+| `POST` | `/api/auth/register` | Register a new user | No |
+| `POST` | `/api/auth/login` | Login and receive a JWT | No |
 
-### 📝 Todos (`/api/todo`)
+### Todos (`/api/todo`)
 
 *(All Todo endpoints require a valid JWT passed in the `Authorization: Bearer <token>` header).*
 
@@ -80,15 +80,15 @@ Run the following command in the root directory of the project:
 | `PUT` | `/api/todo/{id}` | Update the title or status of a specific Todo |
 | `DELETE` | `/api/todo/{id}` | Delete a specific Todo |
 
-### 👑 Admin (`/api/admin`)
+### Admin (`/api/admin`)
 
 | Method | Endpoint | Description | Requires Auth | Role |
 | :--- | :--- | :--- | :--- | :--- |
-| `GET` | `/api/admin/users` | View all registered users | ✅ | `ADMIN` |
+| `GET` | `/api/admin/users` | View all registered users | Yes | `ADMIN` |
 
 ---
 
-## 👨‍💻 Architecture Highlights
+## Architecture Highlights
 
 ### Security Context Lifecycle
 When a request is made to a protected endpoint:
